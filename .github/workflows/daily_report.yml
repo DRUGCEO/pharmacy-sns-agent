@@ -1,6 +1,5 @@
- name: Daily Content Report        
-
-  on:
+ name: Daily Content Report                                            
+  'on':
     schedule:
       - cron: '10 22 * * *'
     workflow_dispatch:
@@ -30,4 +29,4 @@
   secrets.TELEGRAM_BOT_TOKEN }}     
             TELEGRAM_CHAT_ID: ${{   
   secrets.TELEGRAM_CHAT_ID }}       
-          run: python main.py   
+          run: python main.py 
