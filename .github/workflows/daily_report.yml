@@ -1,6 +1,4 @@
-/.github/workflows/daily_report.yml
-
-name: 매일 글감 리포트 전송       
+ name: Daily Content Report        
 
   on:
     schedule:
@@ -11,21 +9,20 @@ name: 매일 글감 리포트 전송
     send-report:
       runs-on: ubuntu-latest        
       steps:
-        - name: 코드 내려받기       
+        - name: Checkout
           uses: actions/checkout@v4 
 
-        - name: Python 3.11 설정    
+        - name: Set up Python       
           uses:
   actions/setup-python@v5
           with:
             python-version: '3.11'  
 
-        - name: 패키지 설치
+        - name: Install dependencies
           run: pip install -r       
   requirements.txt
 
-        - name: 글감 리포트 실행 및 
-  전송
+        - name: Run report
           env:
             ANTHROPIC_API_KEY: ${{  
   secrets.ANTHROPIC_API_KEY }}      
@@ -33,4 +30,4 @@ name: 매일 글감 리포트 전송
   secrets.TELEGRAM_BOT_TOKEN }}     
             TELEGRAM_CHAT_ID: ${{   
   secrets.TELEGRAM_CHAT_ID }}       
-          run: python main.py  
+          run: python main.py   
